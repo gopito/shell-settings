@@ -1,7 +1,7 @@
 #!/bin/bash
 #Устанавливаем скорость автоповтора клавиш
-defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 
 #копируем .zprofile and .zshrc и переименовываем их с суффиксом _old
 zprofile="$HOME/.zprofile"
@@ -16,7 +16,7 @@ if [ -f "$zshrc" ]; then
 fi
 #установка brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-if [[ "${UNAME_MACHINE}" == "arm64" ]]
+if [[ "$(uname -p)" =~ "arm" ]]
   then
     # On ARM macOS, this script installs to /opt/homebrew only
     eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -1,4 +1,4 @@
-if [[ "${UNAME_MACHINE}" == "arm64" ]]
+if [[ "$(uname -p)" =~ "arm64" ]]
   then
     # On ARM macOS, this script installs to /opt/homebrew only
     eval "$(/opt/homebrew/bin/brew shellenv)"
